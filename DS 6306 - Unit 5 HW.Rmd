@@ -1,0 +1,141 @@
+---
+title: "DS 6306 Unit 5 Assignment"
+author: "Gabriel Gonzales"
+date: "February 9, 2019"
+output: html_document
+---
+
+```{r, echo=TRUE} 
+
+# Question 1 Data Munging
+# 1a
+#yob2016 <- read.csv("C:/Users/Gabri/Downloads/yob2016.txt", header=FALSE, sep=";")
+#head(yob2016, 10)
+#1       Emma  F 19414
+#2     Olivia  F 19246
+#3        Ava  F 16237
+#4     Sophia  F 16070
+#5   Isabella  F 14722
+#6        Mia  F 14366
+#7  Charlotte  F 13030
+#8    Abigail  F 11699
+#9      Emily  F 10926
+#10    Harper  F 10733
+#> df <- yob2016
+#> names(df) <- c("firstname", "gender", "amountofchildren")
+#> str(df)
+#'data.frame':	32869 obs. of  3 variables:
+# $ firstname       : Factor w/ 30295 levels "Aaban","Aabha",..: 9317 22546 3770 26409 12019 20596 6185 339 9298 11222 ...
+# $ gender          : Factor w/ 2 levels "F","M": 1 1 1 1 1 1 1 1 1 1 ...
+# $ amountofchildren: int  19414 19246 16237 16070 14722 14366 13030 11699 10926 10733 ...
+#> head(df,10)
+#   firstname gender amountofchildren
+#1       Emma      F            19414
+#2     Olivia      F            19246
+#3        Ava      F            16237
+#4     Sophia      F            16070
+#5   Isabella      F            14722
+#6        Mia      F            14366
+#7  Charlotte      F            13030
+#8    Abigail      F            11699
+#9      Emily      F            10926
+#10    Harper      F            10733
+
+#1b
+#> summary(df)
+#   firstname     gender    amountofchildren 
+# Aalijah:    2   F:18758   Min.   :    5.0  
+# Aaliyan:    2   M:14111   1st Qu.:    7.0  
+# Aamari :    2             Median :   12.0  
+# Aarian :    2             Mean   :  110.7  
+# Aarin  :    2             3rd Qu.:   30.0  
+# Aaris  :    2             Max.   :19414.0  
+# (Other):32857    
+ 
+ #1c
+# grep("yyy", df$firstname)
+#[1] 212
+# df[(212),]
+#    firstname gender amountofchildren
+#212  Fionayyy      F             1547
+
+#1d
+#yob2016 <-df[-c(212),]
+#yob2016[c(210:215),]
+#    firstname gender amountofchildren
+#210      Lila      F             1549
+#211     Fiona      F             1547
+#213    Callie      F             1531
+#214     Lucia      F             1511
+#215    Angela      F             1503
+#216    Marley      F             1491
+
+#Question 2 Data Merging
+#2a
+#yob2015 <- read.csv("C:/Users/Gabri/Downloads/yob2015.txt", header=FALSE)
+#View(yob2015)
+#df <- yob2015
+#names(df) <- c("firstname", "gender", "totalchildren")
+#yob2015 <- df
+
+#2b
+#tail(yob2015, 10)
+#      firstname gender totalchildren
+#33054      Ziyu      M             5
+#33055      Zoel      M             5
+#33056     Zohar      M             5
+#33057    Zolton      M             5
+#33058      Zyah      M             5
+#33059    Zykell      M             5
+#33060    Zyking      M             5
+#33061     Zykir      M             5
+#33062     Zyrus      M             5
+#33063      Zyus      M             5
+
+#The last 10 names are all male gender names and all have the same amount of times the name was given to a child in 2015.
+
+#2c.
+
+#yob20152016 <- merge(yob2015, yob2016, by=c("firstname"))
+#edit(yob20152016))
+#final <-yob20152016
+
+#3 Data Summary
+
+#3a.
+#> final$total <-(final$amountofchildren.x + final$amountofchildren.y)
+#> head(final)
+#  firstname gender.x amountofchildren.x gender.y amountofchildren.y
+#1     Aaban        M                 15        M                  9
+#2     Aabha        F                  7        F                  7
+#3 Aabriella        F                  5        F                 11
+#4     Aadam        M                 22        M                 18
+#5   Aadarsh        M                 15        M                 11
+#6     Aaden        M                297        M                194
+#  total
+#1    24
+#2    14
+#3    16
+#4    40
+#5    26
+#6   491
+
+
+#3b.
+# final[order(-final$total),]
+# Emma       
+# Olivia     
+# Noah         
+# Liam        
+# Sophia        
+# Ava         
+# Mason        
+# William         
+#Jacob        
+#Isabella        
+
+#3c.
+#3d.
+```
+
+
